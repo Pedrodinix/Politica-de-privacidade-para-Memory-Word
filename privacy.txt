@@ -1,21 +1,30 @@
-Política de Privacidade para Memory Word
+Política de Privacidade do Memory Word
 
-O Memory Word é um aplicativo de estudo e memorização de vocabulário, conceitos e questões com armazenamento principal local no dispositivo do utilizador.
+Atualizada em 31 de outubro de 2026.
 
-1. Armazenamento Local e Backup:
-Todas as listas de palavras, objetos de estudo, questões, imagens associadas, configurações e estatísticas de progresso criadas pelo utilizador são guardadas localmente no dispositivo, utilizando uma base de dados SQLite privada do aplicativo (`allowBackup="false"`). A exportação ou importação de cópias de segurança (.zip / .db) ocorre apenas por ação direta e voluntária do utilizador através do menu de partilha do sistema.
+1. Dados armazenados no dispositivo
+O Memory Word é um aplicativo de estudo e memorização. Listas de palavras, conceitos, questões, imagens associadas, configurações e progresso ficam no armazenamento privado do aplicativo no dispositivo. O app não exige criação de conta nem contém anúncios. A base de estudo não é enviada automaticamente a um servidor. Exportar ou compartilhar um backup depende de uma ação do utilizador.
 
-2. Processamento de Dados por Funcionalidades de IA e Tradução (Mediante Ação do Utilizador):
-O aplicativo não recolhe dados em segundo plano e não exige criação de conta. Contudo, quando o utilizador aciona voluntariamente ferramentas assistidas por nuvem, os seguintes dados são transmitidos de forma criptografada (HTTPS):
-- Tradução Automática: Ao tocar no botão de tradução, a palavra ou termo digitado é enviado ao serviço de tradução para preenchimento automático.
-- Recursos de Inteligência Artificial (Google Gemini API): Ao utilizar voluntariamente o "Scanner de Questões por Imagem", o "Gerador de Explicações" ou o "Avaliador de Respostas com IA", a imagem selecionada ou o texto do conceito/resposta são enviados ao backend do Memory Word hospedado na Cloudflare, que encaminha a solicitação ao Google Gemini para extrair o texto da questão, gerar a definição solicitada ou avaliar semanticamente a resposta. A Cloudflare processa metadados de conexão, incluindo o endereço IP, para limitar solicitações. O Worker não registra o conteúdo das imagens, textos ou respostas nos logs da aplicação.
+2. Processamento por serviços externos
+Quando o utilizador escolhe usar uma função de IA, o texto do conceito, da pergunta ou da resposta, ou a imagem escolhida no scanner, é enviado por HTTPS ao backend do Memory Word na Cloudflare. O backend encaminha a solicitação à API Google Gemini para gerar explicações, avaliar respostas ou extrair questões de imagens. A Cloudflare processa metadados de conexão, incluindo o IP utilizado para limitar solicitações. O código do Worker não registra textos, imagens nem respostas em logs da aplicação.
 
-No nível gratuito da Gemini API, o Google pode usar prompts, imagens e respostas para melhorar e desenvolver produtos e tecnologias de machine learning, e revisores humanos podem ler e processar esse conteúdo. Não envie dados pessoais, confidenciais ou sensíveis por essas funções. A disponibilidade depende das cotas gratuitas do serviço.
+O projeto usa o nível gratuito da Gemini API. Pelos termos desse serviço, o Google pode usar entradas e respostas para melhorar e desenvolver seus produtos e tecnologias de machine learning; revisores humanos podem ler e processar esse conteúdo. Não envie dados pessoais, confidenciais ou sensíveis nessas funções. As respostas da IA podem conter erros e devem ser revisadas pelo utilizador. A disponibilidade depende da conexão e das cotas do serviço.
 
-3. Permissões do Dispositivo:
-- Câmara (android.permission.CAMERA): Utilizada exclusivamente quando o utilizador opta por fotografar um item de estudo ou escanear o enunciado de uma questão.
-- Microfone (android.permission.RECORD_AUDIO): Utilizado exclusivamente quando o utilizador ativa o ditado por voz ou o treino de pronúncia ("Língua Afiada") através do serviço de reconhecimento de fala do sistema operativo.
-- Notificações (android.permission.POST_NOTIFICATIONS e RECEIVE_BOOT_COMPLETED): Utilizadas apenas para exibir lembretes locais de estudo configurados pelo próprio utilizador.
+A IA não é oferecida no Espaço Econômico Europeu, Reino Unido e Suíça. O servidor usa o país estimado pela Cloudflare a partir do endereço IP para aplicar essa restrição; não solicita localização por GPS. Se o país não puder ser identificado, o acesso à IA é recusado. Os recursos locais continuam disponíveis.
 
-4. Conteúdo Gerado por IA e Contacto:
-Os resultados gerados pela IA são apresentados ao utilizador para revisão. Em caso de dúvidas sobre esta Política de Privacidade, entre em contacto pelo e-mail pedrodinizrodrigues@gmail.com.
+Ao solicitar uma tradução automática, o texto digitado é enviado por HTTPS ao serviço Google Translate para obter a tradução.
+
+Quando o reconhecimento de fala é ativado, o áudio é processado pelo serviço de reconhecimento do sistema. Conforme o dispositivo e o serviço configurado, esse processamento pode usar a nuvem do fornecedor. O Memory Word não envia esse áudio ao backend Gemini.
+
+3. Permissões
+A câmera é usada quando o utilizador escolhe fotografar um item de estudo ou uma questão. O microfone é usado no ditado por voz e no treino de pronúncia. As notificações e o reagendamento após reinício servem aos lembretes locais configurados pelo utilizador. As permissões podem ser geridas nas configurações do Android.
+
+4. Armazenamento e exclusão
+Os dados locais permanecem no dispositivo até serem apagados no aplicativo, pela limpeza do armazenamento do app ou pela desinstalação. Backups exportados e arquivos compartilhados ficam sob o controle do utilizador e não são apagados automaticamente ao desinstalar. Apagar os dados locais não exclui automaticamente informações já processadas pelos serviços externos. O tratamento e a retenção desses serviços seguem suas próprias políticas; o Memory Word não promete um prazo de retenção que não controla.
+
+5. Contato
+Para questões de privacidade ou relatos sobre respostas geradas pela IA, entre em contato com pedrodinizrodrigues@gmail.com.
+
+Política do Google: https://policies.google.com/privacy
+Termos da Gemini API: https://ai.google.dev/gemini-api/terms
+Política da Cloudflare: https://www.cloudflare.com/privacypolicy/
